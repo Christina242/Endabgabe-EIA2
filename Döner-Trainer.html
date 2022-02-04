@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Döner-Trainer</title>
+    <link rel="stylesheet" href="Dönertrainer.css">
+</head>
+
+<body>
+
+    <h1>Döner-Trainer</h1>
+    <form action="">
+        <div id="form">
+            <fieldset id="Mitarbeiter">
+                <legend> Mitarbeiter </legend>
+                <select name="Select" id="select">
+                    <option value="option1" selected>2</option>
+                    <option value="option2">3</option>
+                    <option value="option2">4</option>
+                </select>
+            </fieldset>
+            <br>
+            <fieldset id="Costumer">
+                <legend> Kunden </legend>
+                <select name="Select" id="select">
+                    <option value="option1" selected>3</option>
+                    <option value="option2">4</option>
+                    <option value="option2">5</option>
+                </select>
+            </fieldset>
+            <br>
+
+            <fieldset id="Rohmaterial">
+                <legend> Rohmaterial </legend>
+                <span id="slider">
+                    <span>
+                1 Stück
+                <input type="range" name="Slider" min="1" max="10" step="1" value="1">
+                10 Stück
+            </span>
+        </span>
+            </fieldset>
+            <br>
+            <fieldset id="Behälter">
+                <legend> Behälter </legend>
+                <span id="slider">
+                    <span>
+                1 Stück
+                <input type="range" name="Slider" min="1" max="15" step="1" value="5">
+                15 Stück
+            </span>
+        </span>
+    </fieldset>
+    
+            <br>
+            <fieldset id="Leerlaufzeit">
+                <legend> Leerlaufzeit </legend>
+
+            </fieldset>
+            <br>
+            <button id="start">START</button>
+        </div>
+    </form>
+    <canvas id="canvas" width="1000" height="800" ></canvas>
+</body>
+
+</html>

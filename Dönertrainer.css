@@ -1,0 +1,19 @@
+body {
+    position: relative;
+    background-color: #FFAD84;
+}
+
+h1 {
+    margin-left: 650px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#start {
+    font-size: 25px;
+    margin-left: 200px;
+}
+
+#form {
+    margin-left: 500px;
+    margin-right: 500px;
+}
