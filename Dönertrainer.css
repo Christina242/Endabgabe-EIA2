@@ -4,16 +4,17 @@ body {
 }
 
 h1 {
-    margin-left: 650px;
+    text-align: center;
+    
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #start {
     font-size: 25px;
-    margin-left: 200px;
+    text-align: center;
 }
 
 #form {
-    margin-left: 500px;
-    margin-right: 500px;
+    margin-left: 300px;
+    margin-right: 300px;
 }
