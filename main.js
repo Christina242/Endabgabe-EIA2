@@ -3,16 +3,21 @@ var DoenerTrainer;
 (function (DoenerTrainer) {
     window.addEventListener("load", handleLoad);
     let startButton;
-    let crc2;
     function handleLoad() {
-        let canvas = document.querySelector("canvas");
-        crc2 = canvas.getContext("2d");
+        let canvas = document.querySelector("#canvas");
+        if (!canvas)
+            return;
+        DoenerTrainer.crc2 = canvas.getContext("2d");
         startButton = document.querySelector("#start");
         startButton.addEventListener("click", startGame);
-        let landingPage;
     }
     function startGame() {
         console.log("start");
+        let form = document.querySelector("form");
+        let body = document.querySelector("body");
+        body.removeChild(form);
+        DoenerTrainer.doenerbude = new DoenerTrainer.KebabHouse();
+        DoenerTrainer.doenerbude.draw();
     }
 })(DoenerTrainer || (DoenerTrainer = {}));
 //# sourceMappingURL=main.js.map
