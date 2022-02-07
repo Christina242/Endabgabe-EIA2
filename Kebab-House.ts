@@ -31,9 +31,11 @@ namespace DoenerTrainer {
 
             //Door
             crc2.beginPath();
-            crc2.fillStyle = "#000000";
-            crc2.fillRect(0, 0, 100, 20);
+            crc2.fillStyle = "#FE6300";
+            crc2.fillRect(350, 0, 100, 20);
             crc2.closePath();
+
+            
         }
     }
 

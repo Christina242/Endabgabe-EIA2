@@ -26,8 +26,8 @@ var DoenerTrainer;
             DoenerTrainer.crc2.closePath();
             //Door
             DoenerTrainer.crc2.beginPath();
-            DoenerTrainer.crc2.fillStyle = "#000000";
-            DoenerTrainer.crc2.fillRect(0, 0, 100, 20);
+            DoenerTrainer.crc2.fillStyle = "#FE6300";
+            DoenerTrainer.crc2.fillRect(350, 0, 100, 20);
             DoenerTrainer.crc2.closePath();
         }
     }

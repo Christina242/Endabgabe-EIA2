@@ -4,7 +4,17 @@ namespace DoenerTrainer {
     
     let startButton: HTMLButtonElement;
     export let crc2: CanvasRenderingContext2D;
-    export let doenerbude: KebabHouse;
+    export let kebabhouse: KebabHouse;
+    export let animation: boolean = false;
+    export let faces: Human;
+
+    // let worker: number= 2;
+    // let customer: number = 3;
+    // let raw: number = 10;
+    // let container: number = 15;
+    // let unoccupied: number = 20;
+
+    // let moveables: Moveable[] = [];
 
     function handleLoad(): void {
         
@@ -25,13 +35,43 @@ namespace DoenerTrainer {
     function startGame(): void {
 
         console.log("start");
+
         let form: HTMLFormElement = <HTMLFormElement>document.querySelector("form");
         let body: HTMLBodyElement = <HTMLBodyElement>document.querySelector("body");
         body.removeChild(form);
-
-        doenerbude = new KebabHouse();
-        doenerbude.draw();
         
+
+        kebabhouse = new KebabHouse();
+        kebabhouse.draw();
+
+        //let canvasWrap: HTMLDivElement = <HTMLDivElement>document.querySelector("#canva-wrap");
+        //canvasWrap.classList.remove("is-hidden");
+
+        //getSettings();
+
+        createPeople();
+
+        animation = true;
+
+    }
+
+    // function getSettings(): void {
+    //     let formData: FormData = new FormData(document.forms[0]); 
+
+    //     worker = Number(formData.get("Worker"));
+    //     customer = Number(formData.get("Customer"));
+    //     raw = Number(formData.get("Raw"));
+    //     container = Number(formData.get("Container"));
+    //     unoccupied = Number(formData.get("Unoccupied"));
+    // }
+
+    function createPeople(): void {
+        // let worker: Worker = new Worker(new Vector(600, 300));
+        // let customer: Customer = new Customer(new Vector(crc2.canvas.width / 2, 15));
+        faces = new Human;
+        // moveables.push(worker, customer);
+        
+
 
     }
 }
