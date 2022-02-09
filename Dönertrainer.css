@@ -17,3 +17,81 @@ h1 {
     margin-left: 500px;
     margin-right: 500px;
 }
+
+#canvas-wrap {
+    position: relative;
+}
+
+
+#cutTomato {
+    background-color: "#FF0000";
+    margin-left: 50px;
+    font-size: 15px;
+}
+
+#cutCucumber {
+    background-color: "#008800";
+    margin-left: 25px;
+    font-size: 15px;
+}
+
+#cutCorn {
+    background-color: "#FFFF00";
+    margin-left: 27px;
+    font-size: 15px;
+}
+
+#cutMeat {
+    background-color: "#b47d49";
+    margin-left: 46px;
+    font-size: 15px;
+}
+
+#cutOnion {
+    background-color: "#FFFFFF";
+    margin-left: 46px;
+    font-size: 15px;
+}
+
+#cutCabbage {
+    background-color: "#FFFFFF";
+    margin-left: 32px;
+    font-size: 15px;
+}
+
+
+#orderTomato {
+    background-color: "#FF0000";
+    margin-left: 50px;
+    font-size: 15px;
+}
+
+#orderCucumber {
+    background-color: "#008800";
+    margin-left: 25px;
+    font-size: 15px;
+}
+
+#orderCorn {
+    background-color: "#FFFF00";
+    margin-left: 27px;
+    font-size: 15px;
+}
+
+#orderMeat {
+    background-color: "#b47d49";
+    margin-left: 38px;
+    font-size: 15px;
+}
+
+#orderOnion {
+    background-color: "#FFFFFF";
+    margin-left: 45px;
+    font-size: 15px;
+}
+
+#orderCabbage {
+    background-color: "#FFFFFF";
+    margin-left: 31px;
+    font-size: 15px;
+}
