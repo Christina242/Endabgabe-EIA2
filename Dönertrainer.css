@@ -1,27 +1,32 @@
 body {
-    position: relative;
     background-color: #FFAD84;
 }
 
 h1 {
-    margin-left: 650px;
+    text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #start {
     font-size: 25px;
-    margin-left: 200px;
+    text-align: center;
 }
 
 #form {
+<<<<<<< HEAD
     margin-left: 500px;
     margin-right: 500px;
+=======
+    margin-left: 300px;
+    margin-right: 300px;
+>>>>>>> 7de78a441072197dc7f56db007811d94cfaaa2c1
 }
 
 #canvas-wrap {
     position: relative;
 }
 
+<<<<<<< HEAD
 
 #cutTomato {
     background-color: "#FF0000";
@@ -95,3 +100,23 @@ h1 {
     margin-left: 31px;
     font-size: 15px;
 }
+=======
+#ingredients {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    
+}
+
+
+/*.is-hidden {
+    display: none;
+}/*
+
+
+
+
+
+
+
+>>>>>>> 7de78a441072197dc7f56db007811d94cfaaa2c1

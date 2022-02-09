@@ -57,4 +57,8 @@
 		"whitespace": [true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type"],
 		"file-header": [false, ""]
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7de78a441072197dc7f56db007811d94cfaaa2c1
