@@ -31,6 +31,10 @@ var DoenerTrainer;
         DoenerTrainer.ingredients.draw();
         DoenerTrainer.lahmacun = new DoenerTrainer.Lahmacun();
         DoenerTrainer.lahmacun.draw();
+        DoenerTrainer.doener = new DoenerTrainer.Doener();
+        DoenerTrainer.doener.draw();
+        DoenerTrainer.yufka = new DoenerTrainer.Yufka();
+        DoenerTrainer.yufka.draw();
         let canvasWrap = document.querySelector("#canvas-wrap");
         canvasWrap.classList.remove("is-hidden");
         getSettings();
@@ -69,6 +73,8 @@ var DoenerTrainer;
         }
         DoenerTrainer.ingredients.draw();
         DoenerTrainer.lahmacun.draw();
+        DoenerTrainer.doener.draw();
+        DoenerTrainer.yufka.draw();
     }
     function giveFood() {
     }

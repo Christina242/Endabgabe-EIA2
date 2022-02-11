@@ -9,6 +9,8 @@ namespace DoenerTrainer {
     export let animation: boolean = false;
     export let faces: Human;
     export let lahmacun: Lahmacun;
+    export let doener: Doener;
+    export let yufka: Yufka;
     let allCustomer: number = 0;
 
     let worker: number = 2;
@@ -53,6 +55,11 @@ namespace DoenerTrainer {
         ingredients.draw();
         lahmacun = new Lahmacun();
         lahmacun.draw();
+        doener = new Doener();
+        doener.draw();
+        yufka = new Yufka();
+        yufka.draw();
+
 
         let canvasWrap: HTMLDivElement = <HTMLDivElement>document.querySelector("#canvas-wrap");
         canvasWrap.classList.remove("is-hidden");
@@ -102,7 +109,8 @@ namespace DoenerTrainer {
         }
         ingredients.draw();
         lahmacun.draw();
-
+        doener.draw();
+        yufka.draw();
     }
 
     function giveFood(): void {
