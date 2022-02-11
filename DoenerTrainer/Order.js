@@ -11,7 +11,7 @@ var DoenerTrainer;
         Ingredients[Ingredients["corn"] = 5] = "corn";
         Ingredients[Ingredients["cabbage"] = 6] = "cabbage";
     })(Ingredients || (Ingredients = {}));
-    let allOrders = [
+    DoenerTrainer.allOrders = [
         {
             name: "Döner mit allem", ingredients: [Ingredients.bread, Ingredients.tomato, Ingredients.corn, Ingredients.cucumber, Ingredients.meat, Ingredients.onion, Ingredients.cabbage]
         },

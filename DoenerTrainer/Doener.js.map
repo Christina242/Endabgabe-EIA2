@@ -1,1 +1,1 @@
-{"version":3,"file":"Doener.js","sourceRoot":"","sources":["Doener.ts"],"names":[],"mappings":""}
+{"version":3,"file":"Doener.js","sourceRoot":"./src/","sources":["Doener.ts"],"names":[],"mappings":";AAAA,IAAU,aAAa,CAUtB;AAVD,WAAU,aAAa;IAEnB,MAAa,MAAM;QAEd,IAAI;YAED,OAAO;QAEV,CAAC;KACL;IAPY,oBAAM,SAOlB,CAAA;AACL,CAAC,EAVS,aAAa,KAAb,aAAa,QAUtB"}

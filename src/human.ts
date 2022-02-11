@@ -1,15 +1,20 @@
 namespace DoenerTrainer {
 
-    export class Worker extends Human {
+    export class Human extends Moveable {
 
-        public position: Vector;
-
-        constructor(_position: Vector, _velocity: Vector) {
+       
+        
+        constructor( _position: Vector, _velocity: Vector) {
             super(_position, _velocity);
 
-            this.position = _position;
+           
         }
 
+        public walk(endPosition: Vector): void {
+            this.position.calculateVector(endPosition);
+            
+        }
+        
         public draw(): void {
             //happyface
             //smiley
@@ -17,7 +22,7 @@ namespace DoenerTrainer {
             crc2.strokeStyle = "black";
             crc2.lineWidth = 5;
             crc2.beginPath();
-            crc2.arc(320, 240, 200, 0, 2 * Math.PI);
+            crc2.arc(this.position.x + 45, this.position.y + 45, 40, 0, 2 * Math.PI);
             crc2.fill();
             crc2.stroke();
             crc2.closePath();
@@ -25,13 +30,13 @@ namespace DoenerTrainer {
             //eyes
             crc2.fillStyle = "black";
             crc2.beginPath();
-            crc2.arc(270, 175, 30, 0, 2 * Math.PI);
+            crc2.arc(this.position.x + 35, this.position.y + 35, 6, 0, 2 * Math.PI);
             crc2.fill();
             crc2.stroke();
             crc2.closePath();
 
             crc2.beginPath();
-            crc2.arc(370, 175, 30, 0, 2 * Math.PI);
+            crc2.arc(this.position.x + 55, this.position.y + 35, 6, 0, 2 * Math.PI);
             crc2.fill();
             crc2.stroke();
             crc2.closePath();
@@ -40,7 +45,7 @@ namespace DoenerTrainer {
             crc2.strokeStyle = "black";
             crc2.lineWidth = 5;
             crc2.beginPath();
-            crc2.arc(320, 240, 150, 0, -1 * Math.PI);
+            crc2.arc(this.position.x + 45, this.position.y + 45, 30, 0, -1 * Math.PI);
             crc2.stroke();
             crc2.closePath();
         }

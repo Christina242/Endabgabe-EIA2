@@ -3,13 +3,13 @@ namespace DoenerTrainer {
     enum Ingredients {
         bread, tomato, onion, cucumber, meat, corn, cabbage
     }
-    interface Order {
+    export interface Order {
         name: string,
         ingredients: Ingredients[]
 
     }
 
-    let allOrders: Order[] = [
+   export let allOrders: Order[] = [
         {
             name: "Döner mit allem", ingredients: [Ingredients.bread, Ingredients.tomato, Ingredients.corn, Ingredients.cucumber, Ingredients.meat, Ingredients.onion, Ingredients.cabbage]
         },

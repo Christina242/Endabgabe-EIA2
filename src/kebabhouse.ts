@@ -3,7 +3,7 @@ namespace DoenerTrainer {
     export class KebabHouse {
         
         draw(): void {
-            console.log("Kebab Haus");
+            //console.log("Kebab Haus");
 
             //customer Field
             crc2.beginPath();

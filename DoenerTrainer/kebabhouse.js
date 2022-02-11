@@ -3,7 +3,7 @@ var DoenerTrainer;
 (function (DoenerTrainer) {
     class KebabHouse {
         draw() {
-            console.log("Kebab Haus");
+            //console.log("Kebab Haus");
             //customer Field
             DoenerTrainer.crc2.beginPath();
             DoenerTrainer.crc2.fillStyle = "#ffffff";

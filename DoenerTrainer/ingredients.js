@@ -3,7 +3,7 @@ var DoenerTrainer;
 (function (DoenerTrainer) {
     class Ingredients {
         draw() {
-            console.log("ingredients");
+            //console.log("ingredients")
             //Tomato
             DoenerTrainer.crc2.beginPath();
             DoenerTrainer.crc2.fillStyle = "#FF0000";
