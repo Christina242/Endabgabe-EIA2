@@ -1,5 +1,8 @@
 namespace DoenerTrainer {
 
+    export enum IngredientsList {
+        bread, tomato, onion, cucumber, meat, corn, cabbage
+    }
     export class Ingredients {
 
         draw(): void {

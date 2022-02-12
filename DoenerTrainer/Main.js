@@ -12,6 +12,7 @@ var DoenerTrainer;
     let unoccupied = 20;
     let moveables = [];
     let imgData;
+    let usedIngredients = [];
     function handleLoad() {
         let canvas = document.querySelector("#canvas");
         if (!canvas)
@@ -19,6 +20,7 @@ var DoenerTrainer;
         DoenerTrainer.crc2 = canvas.getContext("2d");
         startButton = document.querySelector("#start");
         startButton.addEventListener("click", startGame);
+        canvas.addEventListener("mouseup", handleMouse);
     }
     function startGame() {
         console.log("start");
@@ -70,6 +72,12 @@ var DoenerTrainer;
         DoenerTrainer.crc2.putImageData(imgData, 0, 0);
         for (let moveable of moveables) {
             moveable.draw();
+            if (moveable instanceof DoenerTrainer.Worker) {
+                moveable.mood = moveable.mood - 50 / unoccupied;
+            }
+            if (moveable instanceof DoenerTrainer.Customer) {
+                moveable.generateOrder();
+            }
         }
         DoenerTrainer.ingredients.draw();
         DoenerTrainer.lahmacun.draw();
@@ -77,6 +85,13 @@ var DoenerTrainer;
         DoenerTrainer.yufka.draw();
     }
     function giveFood() {
+    }
+    function handleMouse(_event) {
+        let position = new DoenerTrainer.Vector(_event.clientX - DoenerTrainer.crc2.canvas.offsetLeft, _event.clientY - DoenerTrainer.crc2.canvas.offsetTop);
+        if (position.x > 50 && position.y > 130 && position.x < 50 + 70 && position.y < 130 + 100) {
+            usedIngredients.push(DoenerTrainer.IngredientsList.tomato);
+            console.log(usedIngredients);
+        }
     }
 })(DoenerTrainer || (DoenerTrainer = {}));
 //# sourceMappingURL=Main.js.map

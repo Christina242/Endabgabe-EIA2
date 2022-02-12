@@ -23,6 +23,8 @@ namespace DoenerTrainer {
 
     let imgData: ImageData;
 
+    let usedIngredients: IngredientsList[] = [];
+
     function handleLoad(): void {
 
         let canvas: HTMLCanvasElement | null = document.querySelector("#canvas");
@@ -35,7 +37,7 @@ namespace DoenerTrainer {
 
         startButton = <HTMLButtonElement>document.querySelector("#start");
         startButton.addEventListener("click", startGame);
-
+        canvas.addEventListener("mouseup", handleMouse);
 
     }
 
@@ -106,7 +108,16 @@ namespace DoenerTrainer {
         crc2.putImageData(imgData, 0, 0);
         for (let moveable of moveables) {
             moveable.draw();
+            if (moveable instanceof Worker) {
+                moveable.mood = moveable.mood - 50 / unoccupied;
+
+            }
+            if (moveable instanceof Customer) {
+                moveable.generateOrder();
+
+            }
         }
+
         ingredients.draw();
         lahmacun.draw();
         doener.draw();
@@ -116,4 +127,17 @@ namespace DoenerTrainer {
     function giveFood(): void {
 
     }
+
+    function handleMouse(_event: MouseEvent): void {
+        let position: Vector = new Vector(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
+
+        if (position.x > 50 && position.y > 130 && position.x < 50 + 70 && position.y < 130 + 100) {
+            usedIngredients.push(IngredientsList.tomato);
+            console.log(usedIngredients);
+        }
+      
+
+    }
+
+
 }

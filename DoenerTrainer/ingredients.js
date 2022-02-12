@@ -1,6 +1,16 @@
 "use strict";
 var DoenerTrainer;
 (function (DoenerTrainer) {
+    let IngredientsList;
+    (function (IngredientsList) {
+        IngredientsList[IngredientsList["bread"] = 0] = "bread";
+        IngredientsList[IngredientsList["tomato"] = 1] = "tomato";
+        IngredientsList[IngredientsList["onion"] = 2] = "onion";
+        IngredientsList[IngredientsList["cucumber"] = 3] = "cucumber";
+        IngredientsList[IngredientsList["meat"] = 4] = "meat";
+        IngredientsList[IngredientsList["corn"] = 5] = "corn";
+        IngredientsList[IngredientsList["cabbage"] = 6] = "cabbage";
+    })(IngredientsList = DoenerTrainer.IngredientsList || (DoenerTrainer.IngredientsList = {}));
     class Ingredients {
         draw() {
             //console.log("ingredients")
