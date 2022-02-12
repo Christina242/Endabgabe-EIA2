@@ -3,16 +3,24 @@ namespace DoenerTrainer {
     export class Human extends Moveable {
 
         public mood: number = 100;
-
+        public destination: Vector;;
         constructor(_position: Vector, _velocity: Vector) {
             super(_position, _velocity);
-
+            this.destination = this.position;
 
         }
 
         public walk(endPosition: Vector): void {
             this.position.calculateVector(endPosition);
 
+        }
+
+        public move(_timeslice: number): void {
+            let velocity: Vector = this.position.calculateVector(this.destination);//new Vector(this.destination.x / 10, this.destination.y / 10);
+
+            let offset: Vector = velocity.copy();
+            offset.scale(_timeslice);
+            this.position.add(offset);
         }
 
         public draw(): void {

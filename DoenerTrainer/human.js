@@ -5,9 +5,17 @@ var DoenerTrainer;
         constructor(_position, _velocity) {
             super(_position, _velocity);
             this.mood = 100;
+            this.destination = this.position;
         }
+        ;
         walk(endPosition) {
             this.position.calculateVector(endPosition);
+        }
+        move(_timeslice) {
+            let velocity = this.position.calculateVector(this.destination); //new Vector(this.destination.x / 10, this.destination.y / 10);
+            let offset = velocity.copy();
+            offset.scale(_timeslice);
+            this.position.add(offset);
         }
         draw() {
             if (this.mood > 100) {

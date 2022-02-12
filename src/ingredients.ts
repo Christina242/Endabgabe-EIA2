@@ -4,13 +4,18 @@ namespace DoenerTrainer {
         bread, tomato, onion, cucumber, meat, corn, cabbage
     }
     export class Ingredients {
+        public maxIngredients: number; 
+        public maxRawIngredients: number; 
+
+        public usedTomatos: number = 0;
+        public usedRawTomatos: number = 0;
 
         draw(): void {
             //console.log("ingredients")
             //Tomato
             crc2.beginPath();
             crc2.fillStyle = "#FF0000";
-            crc2.fillRect(50, 130, 70, 100);
+            crc2.fillRect(50, 130+100*this.usedTomatos/this.maxIngredients, 70, 100 - 100*this.usedTomatos/this.maxIngredients);
             crc2.font = "18px Arial";
             crc2.fillText("Tomaten", 50, 120);
             crc2.closePath();
@@ -58,7 +63,7 @@ namespace DoenerTrainer {
             //Tomato Raw
             crc2.beginPath();
             crc2.fillStyle = "#FF0000";
-            crc2.fillRect(50, 380, 70, 100);
+            crc2.fillRect(50, 380+ 100*this.usedRawTomatos/this.maxRawIngredients, 70, 100- 100*this.usedRawTomatos/this.maxRawIngredients);
             crc2.font = "18px Arial";
             crc2.fillText("Tomaten", 50, 370);
             crc2.closePath();
@@ -103,6 +108,7 @@ namespace DoenerTrainer {
             crc2.fillText("Rotkraut", 550, 370);
             crc2.closePath();
         }
+
     }
 
 }

@@ -25,6 +25,8 @@ namespace DoenerTrainer {
 
     let usedIngredients: IngredientsList[] = [];
 
+    let activeWorker: Worker;
+
     function handleLoad(): void {
 
         let canvas: HTMLCanvasElement | null = document.querySelector("#canvas");
@@ -71,11 +73,14 @@ namespace DoenerTrainer {
         getSettings();
         createWorker();
 
+        ingredients.maxIngredients = container;
+        ingredients.maxRawIngredients = raw; 
+
         body.removeChild(form);
 
         animation = true;
         window.setInterval(createCustomer, 60000 / customer);
-        window.setInterval(update, 1000);
+        window.setInterval(update, 20);
 
     }
     function getSettings(): void {
@@ -108,9 +113,10 @@ namespace DoenerTrainer {
         crc2.putImageData(imgData, 0, 0);
         for (let moveable of moveables) {
             moveable.draw();
+          
             if (moveable instanceof Worker) {
-                moveable.mood = moveable.mood - 50 / unoccupied;
-
+                moveable.mood = moveable.mood - 50 / unoccupied/ 50;
+                moveable.move(0.15);
             }
             if (moveable instanceof Customer) {
                 moveable.generateOrder();
@@ -129,14 +135,60 @@ namespace DoenerTrainer {
     }
 
     function handleMouse(_event: MouseEvent): void {
+
+
+        console.log(ingredients.maxIngredients, ingredients.maxRawIngredients);
         let position: Vector = new Vector(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
+        
+        for(let moveable of moveables){
+            if(moveable instanceof Worker){
 
-        if (position.x > 50 && position.y > 130 && position.x < 50 + 70 && position.y < 130 + 100) {
-            usedIngredients.push(IngredientsList.tomato);
-            console.log(usedIngredients);
+                if(moveable.position.x < position.x && moveable.position.x + 80 > position.x &&  moveable.position.y < position.y && moveable.position.y + 80 > position.y){
+                    activeWorker = moveable;
+                    console.log(moveable);
+                }
+               
+            }
         }
-      
 
+        if(activeWorker == undefined){
+            return;
+        }
+        if (position.x > 50 && position.y > 130 && position.x < 50 + 70 && position.y < 130 + 100) {
+            activeWorker.destination = new Vector (position.x-40, activeWorker.position.y);
+            if (ingredients.usedTomatos < container) {
+                usedIngredients.push(IngredientsList.tomato);
+                ingredients.usedTomatos = ingredients.usedTomatos + 1;
+                console.log(usedIngredients);
+            }
+            else {
+                window.alert("tomaten sind alle");
+            }
+        }
+
+
+
+        if (position.x > 50 && position.y > 380 && position.x < 50 + 70 && position.y < 380 + 100) {
+            setTimeout(fillTomatos, 500)
+
+        }
+
+
+    }
+
+    function fillTomatos(): void {
+
+        while(ingredients.maxIngredients- ingredients.usedTomatos <= ingredients.maxIngredients&& ingredients.maxRawIngredients-ingredients.usedRawTomatos >0 ){
+            ingredients.usedRawTomatos = ingredients.usedRawTomatos + 1;
+            ingredients.usedTomatos = ingredients.usedTomatos - 1;
+        }
+       
+        if(ingredients.maxRawIngredients-ingredients.usedRawTomatos <= 0){
+            window.alert("tomaten müssen nachbestellt werden");
+        }
+        
+
+        
     }
 
 
