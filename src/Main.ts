@@ -74,7 +74,7 @@ namespace DoenerTrainer {
         createWorker();
 
         ingredients.maxIngredients = container;
-        ingredients.maxRawIngredients = raw; 
+        ingredients.maxRawIngredients = raw;
 
         body.removeChild(form);
 
@@ -91,7 +91,6 @@ namespace DoenerTrainer {
         raw = Number(formData.get("Raw"));
         container = Number(formData.get("Container"));
         unoccupied = Number(formData.get("Unoccupied"));
-        console.log(worker, customer, raw, container, unoccupied);
     }
 
     function createWorker(): void {
@@ -113,9 +112,9 @@ namespace DoenerTrainer {
         crc2.putImageData(imgData, 0, 0);
         for (let moveable of moveables) {
             moveable.draw();
-          
+
             if (moveable instanceof Worker) {
-                moveable.mood = moveable.mood - 50 / unoccupied/ 50;
+                moveable.mood = moveable.mood - 50 / unoccupied / 50;
                 moveable.move(0.15);
             }
             if (moveable instanceof Customer) {
@@ -130,36 +129,73 @@ namespace DoenerTrainer {
         yufka.draw();
     }
 
-    function giveFood(): void {
+    function giveFood(_customer: Customer): void {
+        let allIngredients: IngredientsList[] = usedIngredients;
+        
+        for (let j = 0; j < _customer.order.ingredients.length; j++) {
+            let index: number = -1;
+            for (let i = 0; i < allIngredients.length; i++) {
+
+                if (allIngredients[i] == _customer.order.ingredients[j]) {
+                    index = i;
+                }
+            }
+
+            // allIngredients.indexOf(_customer.order.ingredients[j]);
+            // console.log(_customer.order.ingredients[j]);
+           
+            if (index >= 0) { 
+                allIngredients.splice(index, 1);
+               
+            }
+           
+        }
+       
+        /*  for (let i = 0; i < allIngredients.length; i++) {
+             for (let j = 0; j < _customer.order.ingredients.length; j++) {
+                 if (allIngredients[i] == _customer.order.ingredients[j]) {
+ 
+                 }
+ 
+             }
+ 
+         } */
+
+
 
     }
 
     function handleMouse(_event: MouseEvent): void {
 
 
-        console.log(ingredients.maxIngredients, ingredients.maxRawIngredients);
         let position: Vector = new Vector(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
-        
-        for(let moveable of moveables){
-            if(moveable instanceof Worker){
 
-                if(moveable.position.x < position.x && moveable.position.x + 80 > position.x &&  moveable.position.y < position.y && moveable.position.y + 80 > position.y){
+        for (let moveable of moveables) {
+            if (moveable instanceof Worker) {
+
+                if (moveable.position.x < position.x && moveable.position.x + 80 > position.x && moveable.position.y < position.y && moveable.position.y + 80 > position.y) {
                     activeWorker = moveable;
-                    console.log(moveable);
                 }
-               
+
             }
         }
 
-        if(activeWorker == undefined){
+        for (let moveable of moveables) {
+            if (moveable instanceof Customer) {
+
+                giveFood(moveable);
+            }
+        }
+
+        if (activeWorker == undefined) {
             return;
         }
         if (position.x > 50 && position.y > 130 && position.x < 50 + 70 && position.y < 130 + 100) {
-            activeWorker.destination = new Vector (position.x-40, activeWorker.position.y);
+            activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
             if (ingredients.usedTomatos < container) {
                 usedIngredients.push(IngredientsList.tomato);
                 ingredients.usedTomatos = ingredients.usedTomatos + 1;
-                console.log(usedIngredients);
+                activeWorker.mood = activeWorker.mood + 3;
             }
             else {
                 window.alert("tomaten sind alle");
@@ -170,25 +206,26 @@ namespace DoenerTrainer {
 
         if (position.x > 50 && position.y > 380 && position.x < 50 + 70 && position.y < 380 + 100) {
             setTimeout(fillTomatos, 500)
-
+            activeWorker.mood = activeWorker.mood + 3;
         }
+
 
 
     }
 
     function fillTomatos(): void {
 
-        while(ingredients.maxIngredients- ingredients.usedTomatos <= ingredients.maxIngredients&& ingredients.maxRawIngredients-ingredients.usedRawTomatos >0 ){
+        while (ingredients.maxIngredients - ingredients.usedTomatos <= ingredients.maxIngredients && ingredients.maxRawIngredients - ingredients.usedRawTomatos > 0) {
             ingredients.usedRawTomatos = ingredients.usedRawTomatos + 1;
             ingredients.usedTomatos = ingredients.usedTomatos - 1;
         }
-       
-        if(ingredients.maxRawIngredients-ingredients.usedRawTomatos <= 0){
+
+        if (ingredients.maxRawIngredients - ingredients.usedRawTomatos <= 0) {
             window.alert("tomaten müssen nachbestellt werden");
         }
-        
 
-        
+
+
     }
 
 

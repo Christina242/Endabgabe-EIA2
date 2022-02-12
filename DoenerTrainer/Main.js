@@ -56,7 +56,6 @@ var DoenerTrainer;
         raw = Number(formData.get("Raw"));
         container = Number(formData.get("Container"));
         unoccupied = Number(formData.get("Unoccupied"));
-        console.log(worker, customer, raw, container, unoccupied);
     }
     function createWorker() {
         for (let nWorker = 0; nWorker < worker; nWorker++) {
@@ -88,17 +87,43 @@ var DoenerTrainer;
         DoenerTrainer.doener.draw();
         DoenerTrainer.yufka.draw();
     }
-    function giveFood() {
+    function giveFood(_customer) {
+        let allIngredients = usedIngredients;
+        for (let j = 0; j < _customer.order.ingredients.length; j++) {
+            let index = -1;
+            for (let i = 0; i < allIngredients.length; i++) {
+                if (allIngredients[i] == _customer.order.ingredients[j]) {
+                    index = i;
+                }
+            }
+            // allIngredients.indexOf(_customer.order.ingredients[j]);
+            // console.log(_customer.order.ingredients[j]);
+            if (index >= 0) {
+                allIngredients.splice(index, 1);
+            }
+        }
+        /*  for (let i = 0; i < allIngredients.length; i++) {
+             for (let j = 0; j < _customer.order.ingredients.length; j++) {
+                 if (allIngredients[i] == _customer.order.ingredients[j]) {
+ 
+                 }
+ 
+             }
+ 
+         } */
     }
     function handleMouse(_event) {
-        console.log(DoenerTrainer.ingredients.maxIngredients, DoenerTrainer.ingredients.maxRawIngredients);
         let position = new DoenerTrainer.Vector(_event.clientX - DoenerTrainer.crc2.canvas.offsetLeft, _event.clientY - DoenerTrainer.crc2.canvas.offsetTop);
         for (let moveable of moveables) {
             if (moveable instanceof DoenerTrainer.Worker) {
                 if (moveable.position.x < position.x && moveable.position.x + 80 > position.x && moveable.position.y < position.y && moveable.position.y + 80 > position.y) {
                     activeWorker = moveable;
-                    console.log(moveable);
                 }
+            }
+        }
+        for (let moveable of moveables) {
+            if (moveable instanceof DoenerTrainer.Customer) {
+                giveFood(moveable);
             }
         }
         if (activeWorker == undefined) {
@@ -109,7 +134,7 @@ var DoenerTrainer;
             if (DoenerTrainer.ingredients.usedTomatos < container) {
                 usedIngredients.push(DoenerTrainer.IngredientsList.tomato);
                 DoenerTrainer.ingredients.usedTomatos = DoenerTrainer.ingredients.usedTomatos + 1;
-                console.log(usedIngredients);
+                activeWorker.mood = activeWorker.mood + 3;
             }
             else {
                 window.alert("tomaten sind alle");
@@ -117,6 +142,7 @@ var DoenerTrainer;
         }
         if (position.x > 50 && position.y > 380 && position.x < 50 + 70 && position.y < 380 + 100) {
             setTimeout(fillTomatos, 500);
+            activeWorker.mood = activeWorker.mood + 3;
         }
     }
     function fillTomatos() {
