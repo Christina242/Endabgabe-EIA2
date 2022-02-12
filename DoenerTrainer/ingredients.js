@@ -3,13 +3,15 @@ var DoenerTrainer;
 (function (DoenerTrainer) {
     let IngredientsList;
     (function (IngredientsList) {
-        IngredientsList[IngredientsList["bread"] = 0] = "bread";
-        IngredientsList[IngredientsList["tomato"] = 1] = "tomato";
-        IngredientsList[IngredientsList["onion"] = 2] = "onion";
-        IngredientsList[IngredientsList["cucumber"] = 3] = "cucumber";
-        IngredientsList[IngredientsList["meat"] = 4] = "meat";
-        IngredientsList[IngredientsList["corn"] = 5] = "corn";
-        IngredientsList[IngredientsList["cabbage"] = 6] = "cabbage";
+        IngredientsList[IngredientsList["doener"] = 0] = "doener";
+        IngredientsList[IngredientsList["yufka"] = 1] = "yufka";
+        IngredientsList[IngredientsList["lahmacun"] = 2] = "lahmacun";
+        IngredientsList[IngredientsList["tomato"] = 3] = "tomato";
+        IngredientsList[IngredientsList["onion"] = 4] = "onion";
+        IngredientsList[IngredientsList["cucumber"] = 5] = "cucumber";
+        IngredientsList[IngredientsList["meat"] = 6] = "meat";
+        IngredientsList[IngredientsList["corn"] = 7] = "corn";
+        IngredientsList[IngredientsList["cabbage"] = 8] = "cabbage";
     })(IngredientsList = DoenerTrainer.IngredientsList || (DoenerTrainer.IngredientsList = {}));
     class Ingredients {
         constructor() {

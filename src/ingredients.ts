@@ -1,7 +1,7 @@
 namespace DoenerTrainer {
 
     export enum IngredientsList {
-        bread, tomato, onion, cucumber, meat, corn, cabbage
+        doener, yufka, lahmacun, tomato, onion, cucumber, meat, corn, cabbage
     }
     export class Ingredients {
         public maxIngredients: number; 
