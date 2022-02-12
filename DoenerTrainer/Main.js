@@ -129,6 +129,8 @@ var DoenerTrainer;
         if (activeWorker == undefined) {
             return;
         }
+        //Tomaten 
+        //Worker position 
         if (position.x > 50 && position.y > 130 && position.x < 50 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
             if (DoenerTrainer.ingredients.usedTomatos < container) {
@@ -137,11 +139,96 @@ var DoenerTrainer;
                 activeWorker.mood = activeWorker.mood + 3;
             }
             else {
-                window.alert("tomaten sind alle");
+                window.alert("Tomaten sind leer!");
             }
         }
         if (position.x > 50 && position.y > 380 && position.x < 50 + 70 && position.y < 380 + 100) {
             setTimeout(fillTomatos, 500);
+            activeWorker.mood = activeWorker.mood + 3;
+        }
+        //Gurken
+        //Worker position
+        if (position.x > 150 && position.y > 130 && position.x < 150 + 70 && position.y < 130 + 100) {
+            activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
+            if (DoenerTrainer.ingredients.usedCucumbers < container) {
+                usedIngredients.push(DoenerTrainer.IngredientsList.cucumber);
+                DoenerTrainer.ingredients.usedCucumbers = DoenerTrainer.ingredients.usedCucumbers + 1;
+                activeWorker.mood = activeWorker.mood + 3;
+            }
+            else {
+                window.alert("Gurken sind leer!");
+            }
+        }
+        if (position.x > 150 && position.y > 380 && position.x < 150 + 70 && position.y < 380 + 100) {
+            setTimeout(fillCucumber, 500);
+            activeWorker.mood = activeWorker.mood + 3;
+        }
+        //Mais
+        //Worker position
+        if (position.x > 250 && position.y > 130 && position.x < 250 + 70 && position.y < 130 + 100) {
+            activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
+            if (DoenerTrainer.ingredients.usedCorn < container) {
+                usedIngredients.push(DoenerTrainer.IngredientsList.corn);
+                DoenerTrainer.ingredients.usedCorn = DoenerTrainer.ingredients.usedCorn + 1;
+                activeWorker.mood = activeWorker.mood + 3;
+            }
+            else {
+                window.alert("Mais ist leer!");
+            }
+        }
+        if (position.x > 250 && position.y > 380 && position.x < 250 + 70 && position.y < 380 + 100) {
+            setTimeout(fillCorn, 500);
+            activeWorker.mood = activeWorker.mood + 3;
+        }
+        //Fleisch
+        //Worker position
+        if (position.x > 350 && position.y > 130 && position.x < 350 + 70 && position.y < 130 + 100) {
+            activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
+            if (DoenerTrainer.ingredients.usedMeat < container) {
+                usedIngredients.push(DoenerTrainer.IngredientsList.meat);
+                DoenerTrainer.ingredients.usedMeat = DoenerTrainer.ingredients.usedMeat + 1;
+                activeWorker.mood = activeWorker.mood + 3;
+            }
+            else {
+                window.alert("Fleisch ist leer!");
+            }
+        }
+        if (position.x > 350 && position.y > 380 && position.x < 350 + 70 && position.y < 380 + 100) {
+            setTimeout(fillMeat, 500);
+            activeWorker.mood = activeWorker.mood + 3;
+        }
+        //Zwiebeln
+        //Worker position
+        if (position.x > 450 && position.y > 130 && position.x < 450 + 70 && position.y < 130 + 100) {
+            activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
+            if (DoenerTrainer.ingredients.usedOnions < container) {
+                usedIngredients.push(DoenerTrainer.IngredientsList.onion);
+                DoenerTrainer.ingredients.usedOnions = DoenerTrainer.ingredients.usedOnions + 1;
+                activeWorker.mood = activeWorker.mood + 3;
+            }
+            else {
+                window.alert("Zwiebeln sind leer!");
+            }
+        }
+        if (position.x > 450 && position.y > 380 && position.x < 450 + 70 && position.y < 380 + 100) {
+            setTimeout(fillOnion, 500);
+            activeWorker.mood = activeWorker.mood + 3;
+        }
+        //Rotkraut
+        //Worker position
+        if (position.x > 550 && position.y > 130 && position.x < 550 + 70 && position.y < 130 + 100) {
+            activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
+            if (DoenerTrainer.ingredients.usedCabbage < container) {
+                usedIngredients.push(DoenerTrainer.IngredientsList.cabbage);
+                DoenerTrainer.ingredients.usedCabbage = DoenerTrainer.ingredients.usedCabbage + 1;
+                activeWorker.mood = activeWorker.mood + 3;
+            }
+            else {
+                window.alert("Rotkraut ist leer!");
+            }
+        }
+        if (position.x > 550 && position.y > 380 && position.x < 550 + 70 && position.y < 380 + 100) {
+            setTimeout(fillCabbage, 500);
             activeWorker.mood = activeWorker.mood + 3;
         }
     }
@@ -151,7 +238,52 @@ var DoenerTrainer;
             DoenerTrainer.ingredients.usedTomatos = DoenerTrainer.ingredients.usedTomatos - 1;
         }
         if (DoenerTrainer.ingredients.maxRawIngredients - DoenerTrainer.ingredients.usedRawTomatos <= 0) {
-            window.alert("tomaten müssen nachbestellt werden");
+            window.alert("Tomaten müssen nachbestellt werden!");
+        }
+    }
+    function fillCucumber() {
+        while (DoenerTrainer.ingredients.maxIngredients - DoenerTrainer.ingredients.usedCucumbers <= DoenerTrainer.ingredients.maxIngredients && DoenerTrainer.ingredients.maxRawIngredients - DoenerTrainer.ingredients.usedRawCucumbers > 0) {
+            DoenerTrainer.ingredients.usedRawCucumbers = DoenerTrainer.ingredients.usedRawCucumbers + 1;
+            DoenerTrainer.ingredients.usedCucumbers = DoenerTrainer.ingredients.usedCucumbers - 1;
+        }
+        if (DoenerTrainer.ingredients.maxRawIngredients - DoenerTrainer.ingredients.usedRawCucumbers <= 0) {
+            window.alert("Gurken müssen nachbestellt werden!");
+        }
+    }
+    function fillCorn() {
+        while (DoenerTrainer.ingredients.maxIngredients - DoenerTrainer.ingredients.usedCorn <= DoenerTrainer.ingredients.maxIngredients && DoenerTrainer.ingredients.maxRawIngredients - DoenerTrainer.ingredients.usedRawCorn > 0) {
+            DoenerTrainer.ingredients.usedRawCorn = DoenerTrainer.ingredients.usedRawCorn + 1;
+            DoenerTrainer.ingredients.usedCorn = DoenerTrainer.ingredients.usedCorn - 1;
+        }
+        if (DoenerTrainer.ingredients.maxRawIngredients - DoenerTrainer.ingredients.usedRawCorn <= 0) {
+            window.alert("Mais müssen nachbestellt werden!");
+        }
+    }
+    function fillMeat() {
+        while (DoenerTrainer.ingredients.maxIngredients - DoenerTrainer.ingredients.usedMeat <= DoenerTrainer.ingredients.maxIngredients && DoenerTrainer.ingredients.maxRawIngredients - DoenerTrainer.ingredients.usedRawMeat > 0) {
+            DoenerTrainer.ingredients.usedRawMeat = DoenerTrainer.ingredients.usedRawMeat + 1;
+            DoenerTrainer.ingredients.usedMeat = DoenerTrainer.ingredients.usedMeat - 1;
+        }
+        if (DoenerTrainer.ingredients.maxRawIngredients - DoenerTrainer.ingredients.usedRawMeat <= 0) {
+            window.alert("Fleisch müssen nachbestellt werden!");
+        }
+    }
+    function fillOnion() {
+        while (DoenerTrainer.ingredients.maxIngredients - DoenerTrainer.ingredients.usedOnions <= DoenerTrainer.ingredients.maxIngredients && DoenerTrainer.ingredients.maxRawIngredients - DoenerTrainer.ingredients.usedRawOnions > 0) {
+            DoenerTrainer.ingredients.usedRawOnions = DoenerTrainer.ingredients.usedRawOnions + 1;
+            DoenerTrainer.ingredients.usedOnions = DoenerTrainer.ingredients.usedOnions - 1;
+        }
+        if (DoenerTrainer.ingredients.maxRawIngredients - DoenerTrainer.ingredients.usedRawOnions <= 0) {
+            window.alert("Zwiebeln müssen nachbestellt werden!");
+        }
+    }
+    function fillCabbage() {
+        while (DoenerTrainer.ingredients.maxIngredients - DoenerTrainer.ingredients.usedCabbage <= DoenerTrainer.ingredients.maxIngredients && DoenerTrainer.ingredients.maxRawIngredients - DoenerTrainer.ingredients.usedRawCabbage > 0) {
+            DoenerTrainer.ingredients.usedRawCabbage = DoenerTrainer.ingredients.usedRawCabbage + 1;
+            DoenerTrainer.ingredients.usedCabbage = DoenerTrainer.ingredients.usedCabbage - 1;
+        }
+        if (DoenerTrainer.ingredients.maxRawIngredients - DoenerTrainer.ingredients.usedRawCabbage <= 0) {
+            window.alert("Rotkraut müssen nachbestellt werden!");
         }
     }
 })(DoenerTrainer || (DoenerTrainer = {}));
