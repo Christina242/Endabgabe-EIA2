@@ -90,3 +90,10 @@ h1 {
     margin-left: 31px;
     font-size: 15px;
 }
+
+#canvas-wrap{
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+}
+

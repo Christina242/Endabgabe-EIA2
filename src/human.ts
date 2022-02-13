@@ -10,21 +10,16 @@ namespace DoenerTrainer {
 
         }
 
-        public walk(endPosition: Vector): void {
-            this.position.calculateVector(endPosition);
-
-        }
-
+        
         public move(_timeslice: number): void {
-            let velocity: Vector = this.position.calculateVector(this.destination);//new Vector(this.destination.x / 10, this.destination.y / 10);
+            let velocity: Vector = this.position.calculateVector(this.destination);
 
             let offset: Vector = velocity.copy();
             offset.scale(_timeslice);
             this.position.add(offset);
         }
-
         public draw(): void {
-            if (this.mood > 100) {
+            if (this.mood > 150) {
                 this.drawAngray();
             } else if (this.mood < 50) {
                 this.drawSleepy();

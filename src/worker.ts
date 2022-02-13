@@ -9,9 +9,5 @@ namespace DoenerTrainer {
 
             this.position = _position;
         }
-
-        /* public draw(): void {
-           
-        } */
     }
 }
