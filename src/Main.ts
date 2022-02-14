@@ -1,5 +1,15 @@
 namespace DoenerTrainer {
 
+    /*
+Aufgabe: <Endabgabe>
+Name: <Christina Gabler>
+Matrikel: <268529>
+Datum: <15.02.2022>
+Quellen: <Zusammengearbeitet mit Debbie, Asya, Lisa >7
+         <Asteroids von Jirka>
+         <Soccer game von Mona Stingel>
+*/
+
     window.addEventListener("load", handleLoad);
 
     let startButton: HTMLButtonElement;
