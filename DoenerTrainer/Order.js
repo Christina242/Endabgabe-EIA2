@@ -30,7 +30,7 @@ var DoenerTrainer;
             name: "Lahmacun mit extra Zwiebel", ingredients: [DoenerTrainer.IngredientsList.lahmacun, DoenerTrainer.IngredientsList.tomato, DoenerTrainer.IngredientsList.corn, DoenerTrainer.IngredientsList.cucumber, DoenerTrainer.IngredientsList.meat, DoenerTrainer.IngredientsList.onion, DoenerTrainer.IngredientsList.onion, DoenerTrainer.IngredientsList.cabbage]
         },
         {
-            name: "DÖner mit extra Zwiebel", ingredients: [DoenerTrainer.IngredientsList.doener, DoenerTrainer.IngredientsList.tomato, DoenerTrainer.IngredientsList.corn, DoenerTrainer.IngredientsList.cucumber, DoenerTrainer.IngredientsList.meat, DoenerTrainer.IngredientsList.onion, DoenerTrainer.IngredientsList.onion, DoenerTrainer.IngredientsList.cabbage]
+            name: "Döner mit extra Zwiebel", ingredients: [DoenerTrainer.IngredientsList.doener, DoenerTrainer.IngredientsList.tomato, DoenerTrainer.IngredientsList.corn, DoenerTrainer.IngredientsList.cucumber, DoenerTrainer.IngredientsList.meat, DoenerTrainer.IngredientsList.onion, DoenerTrainer.IngredientsList.onion, DoenerTrainer.IngredientsList.cabbage]
         },
         {
             name: "Yufka mit extra Zwiebel", ingredients: [DoenerTrainer.IngredientsList.yufka, DoenerTrainer.IngredientsList.tomato, DoenerTrainer.IngredientsList.corn, DoenerTrainer.IngredientsList.cucumber, DoenerTrainer.IngredientsList.meat, DoenerTrainer.IngredientsList.onion, DoenerTrainer.IngredientsList.onion, DoenerTrainer.IngredientsList.cabbage]

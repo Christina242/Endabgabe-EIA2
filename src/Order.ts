@@ -36,7 +36,7 @@ namespace DoenerTrainer {
             name: "Lahmacun mit extra Zwiebel", ingredients: [IngredientsList.lahmacun, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion, IngredientsList.onion, IngredientsList.cabbage]
         },
         {
-            name: "DÖner mit extra Zwiebel", ingredients: [IngredientsList.doener, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion, IngredientsList.onion, IngredientsList.cabbage]
+            name: "Döner mit extra Zwiebel", ingredients: [IngredientsList.doener, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion, IngredientsList.onion, IngredientsList.cabbage]
         },
         {
             name: "Yufka mit extra Zwiebel", ingredients: [IngredientsList.yufka, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion, IngredientsList.onion, IngredientsList.cabbage]
