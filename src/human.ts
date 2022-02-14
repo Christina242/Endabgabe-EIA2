@@ -10,7 +10,6 @@ namespace DoenerTrainer {
 
         }
 
-        
         public move(_timeslice: number): void {
             let velocity: Vector = this.position.calculateVector(this.destination);
 
@@ -18,6 +17,8 @@ namespace DoenerTrainer {
             offset.scale(_timeslice);
             this.position.add(offset);
         }
+
+        //generates mood
         public draw(): void {
             if (this.mood > 150) {
                 this.drawAngry();

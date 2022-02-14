@@ -8,6 +8,7 @@ namespace DoenerTrainer {
             this.x = x;
             this.y = y;
         }
+        
         public calculateVector(destination: Vector): Vector {
             let newX: number = destination.x - this.x;
             let newY: number = destination.y - this.y;

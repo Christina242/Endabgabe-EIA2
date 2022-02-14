@@ -14,6 +14,7 @@ var DoenerTrainer;
             offset.scale(_timeslice);
             this.position.add(offset);
         }
+        //generates mood
         draw() {
             if (this.mood > 150) {
                 this.drawAngry();

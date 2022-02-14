@@ -10,29 +10,22 @@ namespace DoenerTrainer {
     export let lahmacun: Lahmacun;
     export let doener: Doener;
     export let yufka: Yufka;
+   
     let allCustomer: number = 0;
-
     let worker: number = 2;
     let customer: number = 3;
     let raw: number = 10;
     let container: number = 15;
     let unoccupied: number = 20;
-
     let moveables: Moveable[] = [];
-
     let imgData: ImageData;
-
     let usedIngredients: IngredientsList[] = [];
-
     let activeWorker: Worker;
-
     let doneOrder: number = 0;
     let happyCustomer: number = 0;
     let angryCustomer: number = 0;
     let happyWorker: number = 0;
     let unHappyWorker: number = 0;
-
-
     let statsDiv: HTMLDivElement;
 
 
@@ -44,23 +37,17 @@ namespace DoenerTrainer {
             return;
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
-
-
         startButton = <HTMLButtonElement>document.querySelector("#start");
         startButton.addEventListener("click", startGame);
         canvas.addEventListener("mouseup", handleMouse);
-
         statsDiv = <HTMLDivElement>document.getElementById("stats");
-
     }
 
     function startGame(): void {
 
-        console.log("start");
-
+        //console.log("start");
         let form: HTMLFormElement = <HTMLFormElement>document.querySelector("form");
         let body: HTMLBodyElement = <HTMLBodyElement>document.querySelector("body");
-
 
         kebabhouse = new KebabHouse();
         kebabhouse.draw();
@@ -73,9 +60,6 @@ namespace DoenerTrainer {
         doener.draw();
         yufka = new Yufka();
         yufka.draw();
-
-
-
 
         getSettings();
         createWorker();
@@ -102,7 +86,6 @@ namespace DoenerTrainer {
         orderMeatButton.addEventListener("click", orderMeat);
         orderOnionButton.addEventListener("click", orderOnion);
         orderCabbageButton.addEventListener("click", orderCabbage);
-
     }
 
     function getSettings(): void {
@@ -121,8 +104,8 @@ namespace DoenerTrainer {
             newWorker.draw();
             moveables.push(newWorker);
         }
-
     }
+
     function createCustomer(): void {
         if (allCustomer < 5) {
             let newCustomer: Customer = new Customer(new Vector(allCustomer * 200, 0), new Vector(0, 0));
@@ -148,15 +131,21 @@ namespace DoenerTrainer {
         }
     }
     
+    //
     function update(): void {
         crc2.putImageData(imgData, 0, 0);
         for (let moveable of moveables) {
             moveable.draw();
 
+            //If moveable is worker: count down the mood 
             if (moveable instanceof Worker) {
                 moveable.mood = moveable.mood - 50 / unoccupied / 50; 
                 moveable.move(0.15);  
             }
+
+            // If moveable is customer: write order on canvas
+            //If customer already left: delete from moveable []
+            // Check mood 
             if (moveable instanceof Customer) {
                 moveable.mood = moveable.mood - 50 / unoccupied / 50;
                 moveable.generateOrder();  
@@ -170,7 +159,6 @@ namespace DoenerTrainer {
                     moveable.destination = new Vector(350 - 100 / 2, moveable.position.y);
                     moveable.haveOrder = true;
                     angryCustomer = angryCustomer + 1;
-
                 }
             }
         }
@@ -183,6 +171,9 @@ namespace DoenerTrainer {
         yufka.draw();
     }
 
+    // copy usedIngreadients [] and order []
+    //If no order: costumer will be send to door and changes mood and gets count to unhappy people 
+    //empty usedIngreadients[]
     function giveFood(_customer: Customer): void {
         let allIngredients: IngredientsList[] = usedIngredients.slice();  
         let order: IngredientsList[] = _customer.order.ingredients.slice(); 
@@ -196,6 +187,8 @@ namespace DoenerTrainer {
             angryCustomer = angryCustomer + 1; 
             return;
         }
+
+        //check ingredients 
         for (let j = order.length; j >= 0; j--) { 
             let index: number = -1; 
             for (let i = 0; i < allIngredients.length; i++) {
@@ -204,7 +197,6 @@ namespace DoenerTrainer {
 
                     index = i; 
                 }
-
             }
 
             if (index >= 0) {
@@ -212,11 +204,9 @@ namespace DoenerTrainer {
                 allIngredients.splice(index, 1); 
                 order.splice(j, 1);
             }
-
         }
 
         if (allIngredients.length == 0 && order.length == 0) { 
-
             _customer.destination = new Vector(350, _customer.position.y); 
 
             if (_customer.mood > 50) { 
@@ -240,12 +230,9 @@ namespace DoenerTrainer {
             doneOrder = doneOrder + 1;
             angryCustomer = angryCustomer + 1;
         }
-
-
     }
 
     function handleMouse(_event: MouseEvent): void {
-
         let position: Vector = new Vector(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
 
         for (let moveable of moveables) {
@@ -263,14 +250,13 @@ namespace DoenerTrainer {
                     giveFood(moveable); 
                 }
             }
-
         }
 
         if (activeWorker == undefined) {
             return;
         }
 
-        //Tomaten 
+        //Tomatoes
         if (position.x > 50 && position.y > 130 && position.x < 50 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
             if (ingredients.usedTomatoes < container) {
@@ -288,7 +274,7 @@ namespace DoenerTrainer {
             activeWorker.mood = activeWorker.mood + 5;
         }
 
-        //Gurken
+        //Cucumbers
         if (position.x > 150 && position.y > 130 && position.x < 150 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
             if (ingredients.usedCucumbers < container) {
@@ -307,7 +293,7 @@ namespace DoenerTrainer {
             activeWorker.mood = activeWorker.mood + 5;
         }
 
-        //Mais
+        //Corn
         if (position.x > 250 && position.y > 130 && position.x < 250 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
             if (ingredients.usedCorn < container) {
@@ -326,7 +312,7 @@ namespace DoenerTrainer {
             activeWorker.mood = activeWorker.mood + 5;
         }
 
-        //Fleisch
+        //Meat
         if (position.x > 350 && position.y > 130 && position.x < 350 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
             if (ingredients.usedMeat < container) {
@@ -345,7 +331,7 @@ namespace DoenerTrainer {
             activeWorker.mood = activeWorker.mood + 5;
         }
 
-        //Zwiebeln
+        //Onions
         if (position.x > 450 && position.y > 130 && position.x < 450 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
             if (ingredients.usedOnions < container) {
@@ -364,7 +350,7 @@ namespace DoenerTrainer {
             activeWorker.mood = activeWorker.mood + 5;
         }
 
-        //Rotkraut
+        //Cabbage
         if (position.x > 550 && position.y > 130 && position.x < 550 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
             if (ingredients.usedCabbage < container) {
@@ -383,7 +369,7 @@ namespace DoenerTrainer {
             activeWorker.mood = activeWorker.mood + 5;
         }
 
-
+        //Lahmacun
         if (position.x > 640 && position.y > 110 && position.x < 640 + 40 && position.y < 110 + 40) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
 
@@ -392,6 +378,7 @@ namespace DoenerTrainer {
             console.log("Lahmacun");
         }
 
+        //Doener
         if (position.x > 640 && position.y > 155 && position.x < 640 + 40 && position.y < 155 + 40) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
 
@@ -400,6 +387,7 @@ namespace DoenerTrainer {
             console.log("Döner");
         }
 
+        //Yufka
         if (position.x > 640 && position.y > 200 && position.x < 640 + 40 && position.y < 200 + 40) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
 
@@ -407,7 +395,6 @@ namespace DoenerTrainer {
             activeWorker.mood = activeWorker.mood + 5;
             console.log("Yufka");
         }
-
     }
 
     function fillTomatoes(): void {

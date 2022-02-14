@@ -20,6 +20,7 @@ var DoenerTrainer;
                 this.done = true;
             }
         }
+        //generates mood 
         draw() {
             if (this.mood < 50) {
                 this.drawAngry();

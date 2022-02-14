@@ -30,7 +30,7 @@ var DoenerTrainer;
         statsDiv = document.getElementById("stats");
     }
     function startGame() {
-        console.log("start");
+        //console.log("start");
         let form = document.querySelector("form");
         let body = document.querySelector("body");
         DoenerTrainer.kebabhouse = new DoenerTrainer.KebabHouse();
@@ -102,14 +102,19 @@ var DoenerTrainer;
             }
         }
     }
+    //
     function update() {
         DoenerTrainer.crc2.putImageData(imgData, 0, 0);
         for (let moveable of moveables) {
             moveable.draw();
+            //If moveable is worker: count down the mood 
             if (moveable instanceof DoenerTrainer.Worker) {
                 moveable.mood = moveable.mood - 50 / unoccupied / 50;
                 moveable.move(0.15);
             }
+            // If moveable is customer: write order on canvas
+            //If customer already left: delete from moveable []
+            // Check mood 
             if (moveable instanceof DoenerTrainer.Customer) {
                 moveable.mood = moveable.mood - 50 / unoccupied / 50;
                 moveable.generateOrder();
@@ -133,6 +138,9 @@ var DoenerTrainer;
         DoenerTrainer.doener.draw();
         DoenerTrainer.yufka.draw();
     }
+    // copy usedIngreadients [] and order []
+    //If no order: costumer will be send to door and changes mood and gets count to unhappy people 
+    //empty usedIngreadients[]
     function giveFood(_customer) {
         let allIngredients = usedIngredients.slice();
         let order = _customer.order.ingredients.slice();
@@ -145,6 +153,7 @@ var DoenerTrainer;
             angryCustomer = angryCustomer + 1;
             return;
         }
+        //check ingredients 
         for (let j = order.length; j >= 0; j--) {
             let index = -1;
             for (let i = 0; i < allIngredients.length; i++) {
@@ -199,7 +208,7 @@ var DoenerTrainer;
         if (activeWorker == undefined) {
             return;
         }
-        //Tomaten 
+        //Tomatoes
         if (position.x > 50 && position.y > 130 && position.x < 50 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
             if (DoenerTrainer.ingredients.usedTomatoes < container) {
@@ -216,7 +225,7 @@ var DoenerTrainer;
             setTimeout(fillTomatoes, 1000);
             activeWorker.mood = activeWorker.mood + 5;
         }
-        //Gurken
+        //Cucumbers
         if (position.x > 150 && position.y > 130 && position.x < 150 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
             if (DoenerTrainer.ingredients.usedCucumbers < container) {
@@ -233,7 +242,7 @@ var DoenerTrainer;
             setTimeout(fillCucumber, 1000);
             activeWorker.mood = activeWorker.mood + 5;
         }
-        //Mais
+        //Corn
         if (position.x > 250 && position.y > 130 && position.x < 250 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
             if (DoenerTrainer.ingredients.usedCorn < container) {
@@ -250,7 +259,7 @@ var DoenerTrainer;
             setTimeout(fillCorn, 1000);
             activeWorker.mood = activeWorker.mood + 5;
         }
-        //Fleisch
+        //Meat
         if (position.x > 350 && position.y > 130 && position.x < 350 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
             if (DoenerTrainer.ingredients.usedMeat < container) {
@@ -267,7 +276,7 @@ var DoenerTrainer;
             setTimeout(fillMeat, 1000);
             activeWorker.mood = activeWorker.mood + 5;
         }
-        //Zwiebeln
+        //Onions
         if (position.x > 450 && position.y > 130 && position.x < 450 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
             if (DoenerTrainer.ingredients.usedOnions < container) {
@@ -284,7 +293,7 @@ var DoenerTrainer;
             setTimeout(fillOnion, 1000);
             activeWorker.mood = activeWorker.mood + 5;
         }
-        //Rotkraut
+        //Cabbage
         if (position.x > 550 && position.y > 130 && position.x < 550 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
             if (DoenerTrainer.ingredients.usedCabbage < container) {
@@ -301,18 +310,21 @@ var DoenerTrainer;
             setTimeout(fillCabbage, 1000);
             activeWorker.mood = activeWorker.mood + 5;
         }
+        //Lahmacun
         if (position.x > 640 && position.y > 110 && position.x < 640 + 40 && position.y < 110 + 40) {
             activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
             usedIngredients.push(DoenerTrainer.IngredientsList.LAHMACUN);
             activeWorker.mood = activeWorker.mood + 5;
             console.log("Lahmacun");
         }
+        //Doener
         if (position.x > 640 && position.y > 155 && position.x < 640 + 40 && position.y < 155 + 40) {
             activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
             usedIngredients.push(DoenerTrainer.IngredientsList.DOENER);
             activeWorker.mood = activeWorker.mood + 5;
             console.log("Döner");
         }
+        //Yufka
         if (position.x > 640 && position.y > 200 && position.x < 640 + 40 && position.y < 200 + 40) {
             activeWorker.destination = new DoenerTrainer.Vector(position.x - 40, activeWorker.position.y);
             usedIngredients.push(DoenerTrainer.IngredientsList.YUFKA);

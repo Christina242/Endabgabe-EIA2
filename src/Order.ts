@@ -4,7 +4,6 @@ namespace DoenerTrainer {
     export interface Order {
         name: string,
         ingredients: IngredientsList[]
-
     }
 
    export let allOrders: Order[] = [
