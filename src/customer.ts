@@ -28,7 +28,7 @@ namespace DoenerTrainer {
         public draw() {
 
             if (this.mood < 50) {
-                this.drawAngray();
+                this.drawAngry();
             }
             else {
                 this.drawHappy();

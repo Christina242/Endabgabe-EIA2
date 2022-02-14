@@ -14,12 +14,13 @@ namespace DoenerTrainer {
             this.velocityY = _velocity.y;
         }
 
-        public update(): void {
-            //
-        }
-
-        public draw(): void {
-            //
-        }
+        // public update(): void {
+        //     //
+        // }
+            
+        
+        public abstract draw(): void;
+            
+    
     }
 }

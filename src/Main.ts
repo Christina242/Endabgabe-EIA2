@@ -5,8 +5,7 @@ namespace DoenerTrainer {
     let startButton: HTMLButtonElement;
     export let crc2: CanvasRenderingContext2D;
     export let kebabhouse: KebabHouse;
-    export let ingredients: Ingredients;
-    export let animation: boolean = false;
+    export let ingredients: Ingredient;
     export let faces: Human;
     export let lahmacun: Lahmacun;
     export let doener: Doener;
@@ -36,25 +35,9 @@ namespace DoenerTrainer {
 
     let statsDiv: HTMLDivElement;
 
-    function countWorkerMood(): void {
-        happyWorker = 0;
-        unHappyWorker = 0;
-        for (let moveable of moveables) {
-
-            if (moveable instanceof Worker) {
-                if (moveable.mood > 150 || moveable.mood < 50) {
-                    unHappyWorker = unHappyWorker + 1;
-                }
-                else {
-                    happyWorker = happyWorker + 1;
-                }
-            }
-        }
-    }
-
 
     function handleLoad(): void {
-        statsDiv = <HTMLDivElement>document.getElementById("stats");
+
         let canvas: HTMLCanvasElement | null = document.querySelector("#canvas");
 
         if (!canvas)
@@ -67,11 +50,45 @@ namespace DoenerTrainer {
         startButton.addEventListener("click", startGame);
         canvas.addEventListener("mouseup", handleMouse);
 
+        statsDiv = <HTMLDivElement>document.getElementById("stats");
+
     }
 
     function startGame(): void {
 
         console.log("start");
+
+        let form: HTMLFormElement = <HTMLFormElement>document.querySelector("form");
+        let body: HTMLBodyElement = <HTMLBodyElement>document.querySelector("body");
+
+
+        kebabhouse = new KebabHouse();
+        kebabhouse.draw();
+        imgData = crc2.getImageData(0, 0, 800, 600);
+        ingredients = new Ingredient();
+        ingredients.draw();
+        lahmacun = new Lahmacun();
+        lahmacun.draw();
+        doener = new Doener();
+        doener.draw();
+        yufka = new Yufka();
+        yufka.draw();
+
+
+
+
+        getSettings();
+        createWorker();
+
+        ingredients.maxIngredients = container;
+        ingredients.maxRawIngredients = raw;
+
+        body.removeChild(form);
+
+        createCustomer();
+        window.setInterval(createCustomer, 60000 / customer);
+        window.setInterval(update, 20); 
+
         let orderTomatoButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("orderTomato");
         let orderCucumberButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("orderCucumber");
         let orderCornButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("orderCorn");
@@ -86,42 +103,8 @@ namespace DoenerTrainer {
         orderOnionButton.addEventListener("click", orderOnion);
         orderCabbageButton.addEventListener("click", orderCabbage);
 
-        let form: HTMLFormElement = <HTMLFormElement>document.querySelector("form");
-        let body: HTMLBodyElement = <HTMLBodyElement>document.querySelector("body");
-
-
-        kebabhouse = new KebabHouse();
-        kebabhouse.draw();
-        imgData = crc2.getImageData(0, 0, 800, 600);
-        ingredients = new Ingredients();
-        ingredients.draw();
-        lahmacun = new Lahmacun();
-        lahmacun.draw();
-        doener = new Doener();
-        doener.draw();
-        yufka = new Yufka();
-        yufka.draw();
-
-
-        let canvasWrap: HTMLDivElement = <HTMLDivElement>document.querySelector("#canvas-wrap");
-        canvasWrap.classList.remove("is-hidden");
-
-
-
-        getSettings();
-        createWorker();
-
-        ingredients.maxIngredients = container;
-        ingredients.maxRawIngredients = raw;
-
-        body.removeChild(form);
-
-        animation = true;
-        createCustomer();
-        window.setInterval(createCustomer, 60000 / customer);
-        window.setInterval(update, 20); 
-
     }
+
     function getSettings(): void {
         let formData: FormData = new FormData(document.forms[0]);
 
@@ -148,7 +131,23 @@ namespace DoenerTrainer {
             allCustomer++;
         }
     }
-    // 
+
+    function countWorkerMood(): void {
+        happyWorker = 0;
+        unHappyWorker = 0;
+        for (let moveable of moveables) {
+
+            if (moveable instanceof Worker) {
+                if (moveable.mood > 150 || moveable.mood < 50) {
+                    unHappyWorker = unHappyWorker + 1;
+                }
+                else {
+                    happyWorker = happyWorker + 1;
+                }
+            }
+        }
+    }
+    
     function update(): void {
         crc2.putImageData(imgData, 0, 0);
         for (let moveable of moveables) {
@@ -274,9 +273,9 @@ namespace DoenerTrainer {
         //Tomaten 
         if (position.x > 50 && position.y > 130 && position.x < 50 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
-            if (ingredients.usedTomatos < container) {
-                usedIngredients.push(IngredientsList.tomato); 
-                ingredients.usedTomatos = ingredients.usedTomatos + 1;  
+            if (ingredients.usedTomatoes < container) {
+                usedIngredients.push(IngredientsList.TOMATO); 
+                ingredients.usedTomatoes = ingredients.usedTomatoes + 1;  
                 activeWorker.mood = activeWorker.mood + 5; 
             }
             else {
@@ -285,7 +284,7 @@ namespace DoenerTrainer {
         }
         if (position.x > 50 && position.y > 380 && position.x < 50 + 70 && position.y < 380 + 100) { 
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y); 
-            setTimeout(fillTomatos, 1000); 
+            setTimeout(fillTomatoes, 1000); 
             activeWorker.mood = activeWorker.mood + 5;
         }
 
@@ -312,7 +311,7 @@ namespace DoenerTrainer {
         if (position.x > 250 && position.y > 130 && position.x < 250 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
             if (ingredients.usedCorn < container) {
-                usedIngredients.push(IngredientsList.corn);
+                usedIngredients.push(IngredientsList.CORN);
                 ingredients.usedCorn = ingredients.usedCorn + 1;
                 activeWorker.mood = activeWorker.mood + 5;
             }
@@ -331,7 +330,7 @@ namespace DoenerTrainer {
         if (position.x > 350 && position.y > 130 && position.x < 350 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
             if (ingredients.usedMeat < container) {
-                usedIngredients.push(IngredientsList.meat);
+                usedIngredients.push(IngredientsList.MEAT);
                 ingredients.usedMeat = ingredients.usedMeat + 1;
                 activeWorker.mood = activeWorker.mood + 5;
             }
@@ -350,7 +349,7 @@ namespace DoenerTrainer {
         if (position.x > 450 && position.y > 130 && position.x < 450 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
             if (ingredients.usedOnions < container) {
-                usedIngredients.push(IngredientsList.onion);
+                usedIngredients.push(IngredientsList.ONION);
                 ingredients.usedOnions = ingredients.usedOnions + 1;
                 activeWorker.mood = activeWorker.mood + 5;
             }
@@ -369,7 +368,7 @@ namespace DoenerTrainer {
         if (position.x > 550 && position.y > 130 && position.x < 550 + 70 && position.y < 130 + 100) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
             if (ingredients.usedCabbage < container) {
-                usedIngredients.push(IngredientsList.cabbage);
+                usedIngredients.push(IngredientsList.CABBAGE);
                 ingredients.usedCabbage = ingredients.usedCabbage + 1;
                 activeWorker.mood = activeWorker.mood + 5;
             }
@@ -388,7 +387,7 @@ namespace DoenerTrainer {
         if (position.x > 640 && position.y > 110 && position.x < 640 + 40 && position.y < 110 + 40) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
 
-            usedIngredients.push(IngredientsList.lahmacun);
+            usedIngredients.push(IngredientsList.LAHMACUN);
             activeWorker.mood = activeWorker.mood + 5;
             console.log("Lahmacun");
         }
@@ -396,7 +395,7 @@ namespace DoenerTrainer {
         if (position.x > 640 && position.y > 155 && position.x < 640 + 40 && position.y < 155 + 40) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
 
-            usedIngredients.push(IngredientsList.doener);
+            usedIngredients.push(IngredientsList.DOENER);
             activeWorker.mood = activeWorker.mood + 5;
             console.log("Döner");
         }
@@ -404,20 +403,20 @@ namespace DoenerTrainer {
         if (position.x > 640 && position.y > 200 && position.x < 640 + 40 && position.y < 200 + 40) {
             activeWorker.destination = new Vector(position.x - 40, activeWorker.position.y);
 
-            usedIngredients.push(IngredientsList.yufka);
+            usedIngredients.push(IngredientsList.YUFKA);
             activeWorker.mood = activeWorker.mood + 5;
             console.log("Yufka");
         }
 
     }
 
-    function fillTomatos(): void {
-        while (ingredients.maxIngredients - ingredients.usedTomatos < ingredients.maxIngredients && ingredients.maxRawIngredients - ingredients.usedRawTomatos > 0) {
-            ingredients.usedRawTomatos = ingredients.usedRawTomatos + 1;
-            ingredients.usedTomatos = ingredients.usedTomatos - 1;
+    function fillTomatoes(): void {
+        while (ingredients.maxIngredients - ingredients.usedTomatoes < ingredients.maxIngredients && ingredients.maxRawIngredients - ingredients.usedRawTomatoes > 0) {
+            ingredients.usedRawTomatoes = ingredients.usedRawTomatoes + 1;
+            ingredients.usedTomatoes = ingredients.usedTomatoes - 1;
         }
 
-        if (ingredients.maxRawIngredients - ingredients.usedRawTomatos <= 0) {
+        if (ingredients.maxRawIngredients - ingredients.usedRawTomatoes <= 0) {
             window.alert("Tomaten müssen nachbestellt werden!");
         }
     }
@@ -483,45 +482,45 @@ namespace DoenerTrainer {
     }
 
     function orderTomato(): void {
-        setTimeout(fillRowTomato, 5000);
+        setTimeout(fillRawTomato, 5000);
     }
-    function fillRowTomato(): void {
-        ingredients.usedRawTomatos = 0 
+    function fillRawTomato(): void {
+        ingredients.usedRawTomatoes = 0 
     }
 
     function orderCucumber() {
-        setTimeout(fillRowCucumber, 5000);
+        setTimeout(fillRawCucumber, 5000);
     }
-    function fillRowCucumber(): void {
+    function fillRawCucumber(): void {
         ingredients.usedRawCucumbers = 0
     }
 
     function orderCorn() {
-        setTimeout(fillRowCorn, 5000);
+        setTimeout(fillRawCorn, 5000);
     }
-    function fillRowCorn(): void {
+    function fillRawCorn(): void {
         ingredients.usedRawCorn = 0
     }
 
     function orderMeat() {
-        setTimeout(fillRowMeat, 5000);
+        setTimeout(fillRawMeat, 5000);
     }
-    function fillRowMeat(): void {
+    function fillRawMeat(): void {
         ingredients.usedRawMeat = 0
     }
 
     function orderOnion() {
-        setTimeout(fillRowOnion, 5000);
+        setTimeout(fillRawOnion, 5000);
     }
-    function fillRowOnion(): void {
+    function fillRawOnion(): void {
         ingredients.usedRawOnions = 0
     }
 
     function orderCabbage() {
-        setTimeout(fillRowCabbage, 5000);
+        setTimeout(fillRawCabbage, 5000);
     }
 
-    function fillRowCabbage(): void {
+    function fillRawCabbage(): void {
         ingredients.usedRawCabbage = 0
     }
 }

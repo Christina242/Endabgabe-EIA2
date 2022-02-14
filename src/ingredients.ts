@@ -1,14 +1,14 @@
 namespace DoenerTrainer {
 
     export enum IngredientsList {
-        doener, yufka, lahmacun, tomato, onion, cucumber, meat, corn, cabbage
+        DOENER, YUFKA, LAHMACUN, TOMATO, ONION, cucumber, MEAT, CORN, CABBAGE
     }
-    export class Ingredients {
+    export class Ingredient {
         public maxIngredients: number; 
         public maxRawIngredients: number; 
 
-        public usedTomatos: number = 0;
-        public usedRawTomatos: number = 0;
+        public usedTomatoes: number = 0;
+        public usedRawTomatoes: number = 0;
         public usedCucumbers: number = 0;
         public usedRawCucumbers: number = 0;
         public usedCorn: number = 0;
@@ -25,7 +25,7 @@ namespace DoenerTrainer {
             //Tomato
             crc2.beginPath();
             crc2.fillStyle = "#FF0000";
-            crc2.fillRect(50, 130+100*this.usedTomatos/this.maxIngredients, 70, 100 - 100*this.usedTomatos/this.maxIngredients);
+            crc2.fillRect(50, 130+100*this.usedTomatoes/this.maxIngredients, 70, 100 - 100*this.usedTomatoes/this.maxIngredients);
             crc2.font = "18px Arial";
             crc2.fillText("Tomaten", 50, 120);
             crc2.closePath();
@@ -73,7 +73,7 @@ namespace DoenerTrainer {
             //Tomato Raw
             crc2.beginPath();
             crc2.fillStyle = "#FF0000";
-            crc2.fillRect(50, 380+ 100*this.usedRawTomatos/this.maxRawIngredients, 70, 100- 100*this.usedRawTomatos/this.maxRawIngredients);
+            crc2.fillRect(50, 380+ 100*this.usedRawTomatoes/this.maxRawIngredients, 70, 100- 100*this.usedRawTomatoes/this.maxRawIngredients);
             crc2.font = "18px Arial";
             crc2.fillText("Tomaten", 50, 370);
             crc2.closePath();

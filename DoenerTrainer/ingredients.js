@@ -3,20 +3,20 @@ var DoenerTrainer;
 (function (DoenerTrainer) {
     let IngredientsList;
     (function (IngredientsList) {
-        IngredientsList[IngredientsList["doener"] = 0] = "doener";
-        IngredientsList[IngredientsList["yufka"] = 1] = "yufka";
-        IngredientsList[IngredientsList["lahmacun"] = 2] = "lahmacun";
-        IngredientsList[IngredientsList["tomato"] = 3] = "tomato";
-        IngredientsList[IngredientsList["onion"] = 4] = "onion";
+        IngredientsList[IngredientsList["DOENER"] = 0] = "DOENER";
+        IngredientsList[IngredientsList["YUFKA"] = 1] = "YUFKA";
+        IngredientsList[IngredientsList["LAHMACUN"] = 2] = "LAHMACUN";
+        IngredientsList[IngredientsList["TOMATO"] = 3] = "TOMATO";
+        IngredientsList[IngredientsList["ONION"] = 4] = "ONION";
         IngredientsList[IngredientsList["cucumber"] = 5] = "cucumber";
-        IngredientsList[IngredientsList["meat"] = 6] = "meat";
-        IngredientsList[IngredientsList["corn"] = 7] = "corn";
-        IngredientsList[IngredientsList["cabbage"] = 8] = "cabbage";
+        IngredientsList[IngredientsList["MEAT"] = 6] = "MEAT";
+        IngredientsList[IngredientsList["CORN"] = 7] = "CORN";
+        IngredientsList[IngredientsList["CABBAGE"] = 8] = "CABBAGE";
     })(IngredientsList = DoenerTrainer.IngredientsList || (DoenerTrainer.IngredientsList = {}));
-    class Ingredients {
+    class Ingredient {
         constructor() {
-            this.usedTomatos = 0;
-            this.usedRawTomatos = 0;
+            this.usedTomatoes = 0;
+            this.usedRawTomatoes = 0;
             this.usedCucumbers = 0;
             this.usedRawCucumbers = 0;
             this.usedCorn = 0;
@@ -33,7 +33,7 @@ var DoenerTrainer;
             //Tomato
             DoenerTrainer.crc2.beginPath();
             DoenerTrainer.crc2.fillStyle = "#FF0000";
-            DoenerTrainer.crc2.fillRect(50, 130 + 100 * this.usedTomatos / this.maxIngredients, 70, 100 - 100 * this.usedTomatos / this.maxIngredients);
+            DoenerTrainer.crc2.fillRect(50, 130 + 100 * this.usedTomatoes / this.maxIngredients, 70, 100 - 100 * this.usedTomatoes / this.maxIngredients);
             DoenerTrainer.crc2.font = "18px Arial";
             DoenerTrainer.crc2.fillText("Tomaten", 50, 120);
             DoenerTrainer.crc2.closePath();
@@ -75,7 +75,7 @@ var DoenerTrainer;
             //Tomato Raw
             DoenerTrainer.crc2.beginPath();
             DoenerTrainer.crc2.fillStyle = "#FF0000";
-            DoenerTrainer.crc2.fillRect(50, 380 + 100 * this.usedRawTomatos / this.maxRawIngredients, 70, 100 - 100 * this.usedRawTomatos / this.maxRawIngredients);
+            DoenerTrainer.crc2.fillRect(50, 380 + 100 * this.usedRawTomatoes / this.maxRawIngredients, 70, 100 - 100 * this.usedRawTomatoes / this.maxRawIngredients);
             DoenerTrainer.crc2.font = "18px Arial";
             DoenerTrainer.crc2.fillText("Tomaten", 50, 370);
             DoenerTrainer.crc2.closePath();
@@ -116,6 +116,6 @@ var DoenerTrainer;
             DoenerTrainer.crc2.closePath();
         }
     }
-    DoenerTrainer.Ingredients = Ingredients;
+    DoenerTrainer.Ingredient = Ingredient;
 })(DoenerTrainer || (DoenerTrainer = {}));
 //# sourceMappingURL=ingredients.js.map

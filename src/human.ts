@@ -20,7 +20,7 @@ namespace DoenerTrainer {
         }
         public draw(): void {
             if (this.mood > 150) {
-                this.drawAngray();
+                this.drawAngry();
             } else if (this.mood < 50) {
                 this.drawSleepy();
             }
@@ -29,7 +29,7 @@ namespace DoenerTrainer {
             }
         }
 
-        public drawAngray() {
+        public drawAngry(): void {
             //angryface
             //smiley
             crc2.fillStyle = "red";

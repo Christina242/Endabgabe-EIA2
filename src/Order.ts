@@ -9,46 +9,46 @@ namespace DoenerTrainer {
 
    export let allOrders: Order[] = [
         {
-            name: "Döner mit allem", ingredients: [IngredientsList.doener, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion, IngredientsList.cabbage]
+            name: "Döner mit allem", ingredients: [IngredientsList.DOENER, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.MEAT, IngredientsList.ONION, IngredientsList.CABBAGE]
         },
         {
-            name: "Yufka mit allem", ingredients: [IngredientsList.yufka, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion, IngredientsList.cabbage]
+            name: "Yufka mit allem", ingredients: [IngredientsList.YUFKA, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.MEAT, IngredientsList.ONION, IngredientsList.CABBAGE]
         },
         {
-            name: "Lahmacun mit allem", ingredients: [IngredientsList.lahmacun, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion, IngredientsList.cabbage]
+            name: "Lahmacun mit allem", ingredients: [IngredientsList.LAHMACUN, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.MEAT, IngredientsList.ONION, IngredientsList.CABBAGE]
         },
         {
-            name: "Döner vegetarisch", ingredients: [IngredientsList.doener, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.onion, IngredientsList.cabbage]
+            name: "Döner vegetarisch", ingredients: [IngredientsList.DOENER, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.ONION, IngredientsList.CABBAGE]
         },
         {
-            name: "Yufka vegetarisch", ingredients: [IngredientsList.yufka, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.onion, IngredientsList.cabbage]
+            name: "Yufka vegetarisch", ingredients: [IngredientsList.YUFKA, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.ONION, IngredientsList.CABBAGE]
         },
         {
-            name: "Lahmacun ohne Zwiebel", ingredients: [IngredientsList.lahmacun, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.cabbage]
+            name: "Lahmacun ohne Zwiebel", ingredients: [IngredientsList.LAHMACUN, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.MEAT, IngredientsList.CABBAGE]
         },
         {
-            name: "Döner ohne Zwiebel", ingredients: [IngredientsList.doener, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.cabbage]
+            name: "Döner ohne Zwiebel", ingredients: [IngredientsList.DOENER, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.MEAT, IngredientsList.CABBAGE]
         },
         {
-            name: "Yufka ohne Zwiebel", ingredients: [IngredientsList.yufka, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.cabbage]
+            name: "Yufka ohne Zwiebel", ingredients: [IngredientsList.YUFKA, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.MEAT, IngredientsList.CABBAGE]
         },
         {
-            name: "Lahmacun mit extra Zwiebel", ingredients: [IngredientsList.lahmacun, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion, IngredientsList.onion, IngredientsList.cabbage]
+            name: "Lahmacun mit extra Zwiebel", ingredients: [IngredientsList.LAHMACUN, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.MEAT, IngredientsList.ONION, IngredientsList.ONION, IngredientsList.CABBAGE]
         },
         {
-            name: "Döner mit extra Zwiebel", ingredients: [IngredientsList.doener, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion, IngredientsList.onion, IngredientsList.cabbage]
+            name: "Döner mit extra Zwiebel", ingredients: [IngredientsList.DOENER, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.MEAT, IngredientsList.ONION, IngredientsList.ONION, IngredientsList.CABBAGE]
         },
         {
-            name: "Yufka mit extra Zwiebel", ingredients: [IngredientsList.yufka, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion, IngredientsList.onion, IngredientsList.cabbage]
+            name: "Yufka mit extra Zwiebel", ingredients: [IngredientsList.YUFKA, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.MEAT, IngredientsList.ONION, IngredientsList.ONION, IngredientsList.CABBAGE]
         },
         {
-            name: "Döner ohne Kraut", ingredients: [IngredientsList.doener, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion]
+            name: "Döner ohne Kraut", ingredients: [IngredientsList.DOENER, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.MEAT, IngredientsList.ONION]
         },
         {
-            name: "Yufka ohne Kraut", ingredients: [IngredientsList.yufka, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion]
+            name: "Yufka ohne Kraut", ingredients: [IngredientsList.YUFKA, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.MEAT, IngredientsList.ONION]
         },
         {
-            name: "Lahmacun ohne Kraut", ingredients: [IngredientsList.lahmacun, IngredientsList.tomato, IngredientsList.corn, IngredientsList.cucumber, IngredientsList.meat, IngredientsList.onion]
+            name: "Lahmacun ohne Kraut", ingredients: [IngredientsList.LAHMACUN, IngredientsList.TOMATO, IngredientsList.CORN, IngredientsList.cucumber, IngredientsList.MEAT, IngredientsList.ONION]
         }
     ]
 }

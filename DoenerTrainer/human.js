@@ -16,7 +16,7 @@ var DoenerTrainer;
         }
         draw() {
             if (this.mood > 150) {
-                this.drawAngray();
+                this.drawAngry();
             }
             else if (this.mood < 50) {
                 this.drawSleepy();
@@ -25,7 +25,7 @@ var DoenerTrainer;
                 this.drawHappy();
             }
         }
-        drawAngray() {
+        drawAngry() {
             //angryface
             //smiley
             DoenerTrainer.crc2.fillStyle = "red";

@@ -9,12 +9,6 @@ var DoenerTrainer;
             this.velocityX = _velocity.x;
             this.velocityY = _velocity.y;
         }
-        update() {
-            //
-        }
-        draw() {
-            //
-        }
     }
     DoenerTrainer.Moveable = Moveable;
 })(DoenerTrainer || (DoenerTrainer = {}));
