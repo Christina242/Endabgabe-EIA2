@@ -2,10 +2,11 @@
 var DoenerTrainer;
 (function (DoenerTrainer) {
     class Customer extends DoenerTrainer.Human {
+        order;
+        done = false;
+        haveOrder = false;
         constructor(_position, _velocity) {
             super(_position, _velocity);
-            this.done = false;
-            this.haveOrder = false;
             this.order = DoenerTrainer.allOrders[Math.floor(Math.random() * DoenerTrainer.allOrders.length)];
             this.generateOrder();
         }

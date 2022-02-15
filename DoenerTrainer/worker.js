@@ -2,6 +2,7 @@
 var DoenerTrainer;
 (function (DoenerTrainer) {
     class Worker extends DoenerTrainer.Human {
+        position;
         constructor(_position, _velocity) {
             super(_position, _velocity);
             this.position = _position;

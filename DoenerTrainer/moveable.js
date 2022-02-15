@@ -2,6 +2,11 @@
 var DoenerTrainer;
 (function (DoenerTrainer) {
     class Moveable {
+        posX;
+        posY;
+        position;
+        velocityX;
+        velocityY;
         constructor(_position, _velocity) {
             this.posX = _position.x;
             this.posY = _position.y;

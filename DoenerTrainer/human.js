@@ -2,12 +2,13 @@
 var DoenerTrainer;
 (function (DoenerTrainer) {
     class Human extends DoenerTrainer.Moveable {
+        mood = 100;
+        destination;
+        ;
         constructor(_position, _velocity) {
             super(_position, _velocity);
-            this.mood = 100;
             this.destination = this.position;
         }
-        ;
         move(_timeslice) {
             let velocity = this.position.calculateVector(this.destination);
             let offset = velocity.copy();

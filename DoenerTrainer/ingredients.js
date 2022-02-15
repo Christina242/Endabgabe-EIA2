@@ -14,20 +14,20 @@ var DoenerTrainer;
         IngredientsList[IngredientsList["CABBAGE"] = 8] = "CABBAGE";
     })(IngredientsList = DoenerTrainer.IngredientsList || (DoenerTrainer.IngredientsList = {}));
     class Ingredient {
-        constructor() {
-            this.usedTomatoes = 0;
-            this.usedRawTomatoes = 0;
-            this.usedCucumbers = 0;
-            this.usedRawCucumbers = 0;
-            this.usedCorn = 0;
-            this.usedRawCorn = 0;
-            this.usedMeat = 0;
-            this.usedRawMeat = 0;
-            this.usedOnions = 0;
-            this.usedRawOnions = 0;
-            this.usedCabbage = 0;
-            this.usedRawCabbage = 0;
-        }
+        maxIngredients;
+        maxRawIngredients;
+        usedTomatoes = 0;
+        usedRawTomatoes = 0;
+        usedCucumbers = 0;
+        usedRawCucumbers = 0;
+        usedCorn = 0;
+        usedRawCorn = 0;
+        usedMeat = 0;
+        usedRawMeat = 0;
+        usedOnions = 0;
+        usedRawOnions = 0;
+        usedCabbage = 0;
+        usedRawCabbage = 0;
         draw() {
             //console.log("ingredients")
             //Tomato
